@@ -132,6 +132,7 @@
               $("#load_table").append(
                 "<tr><h2>" + data.message + "</h2></tr>"
               );
+              console.log("Table has no records")
             }
             else {
               $.each(data, function (key, value) {
@@ -147,6 +148,7 @@
                 );
               });
             }
+            console.log("Records in the table");
             console.log(data);
           }
         });
@@ -191,6 +193,7 @@
       $("#save-btn").on("click", function (e) {
         e.preventDefault();
         var jsonObj = jsonData("#addForm");
+        console.log("New record saved");
         console.log(jsonObj);
 
         if (jsonObj == false) {
@@ -244,7 +247,7 @@
 
         e.preventDefault();
         var jsonObj = jsonData("#edit_form");
-        console.log("Generated Message");
+        console.log("Updated record");
         console.log(jsonObj);
         
         if (jsonObj == false) {
@@ -258,7 +261,6 @@
             contentType: "application/json",
             success: function (data) {
               message(data.message, data.status);
-              console.log("Generated Message");
               console.log(data);
               if (data.status == true) {
                 $("#edit").modal("hide");
