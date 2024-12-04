@@ -1,120 +1,145 @@
 <!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-  <title>Crud Api</title>
-</head>
-
-<body>
-
-  <!--Signup Modal -->
-  <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="signup" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header bg-dark text-primary">
-          <h5 class="modal-title" id="signup">Edit Records</h5>
-          <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form id="edit_form">
-            <input type="hidden" id="edit_id" name="id">
-            <div class="mb-3">
-              <label for="name" class="form-label">Name</label>
-              <input type="text" class="form-control" id="edit_name" name="name" aria-describedby="emailHelp"
+    <title>Crud Api</title>
+  </head>
+  
+  <body>
+    
+    <!--Edit Modal -->
+    <div class="modal fade del-modal" id="edit" tabindex="-1" aria-labelledby="signup" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-dark text-primary">
+            <h5 class="modal-title" id="signup">Edit Records</h5>
+            <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="edit_form">
+              <input type="hidden" id="edit_id" name="id">
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="edit_name" name="name" aria-describedby="emailHelp"
                 autocomplete="name">
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="edit_email" name="email" aria-describedby="emailHelp"
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="edit_email" name="email" aria-describedby="emailHelp"
                 autocomplete="email">
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="edit_password" name="password"
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="edit_password" name="password"
                 autocomplete="current-password">
-            </div>
-            <button type="submit" class="btn btn-primary" id="update">Update</button>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </form>
+              </div>
+              <button type="submit" class="btn btn-primary" id="update">Update</button>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    
+    <!-- Delete Modal  -->
+    <div class="modal " id="delete" tabindex="-1" >
+      <div class="modal-dialog ">
+        <div class="modal-content ">
+          <div class="modal-header bg-dark text-white">
+            <h5 class="modal-title text-primary">Alert</h5>
+            <button type="button  " class="close text-white " data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Are you really want to delete this record.</p>
+          </div>
+          <div class="modal-footer ">
+            <button type="button" class="btn btn-primary" id="confirm">Confirm</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Search Box -->
+    <nav class="navbar navbar-dark bg-dark">
+      <h3 class="text-center text-light bg-dark py-2">CRUD API</h3>
+      <form class="d-flex">
+        <input class="form-control mr-sm-1" type="search" id="search" name="search" placeholder="Search"
+          aria-label="Search" autocomplete="off">
+        <button class="btn btn-success mx-2 my-sm-0" type="submit" >Search</button>
+      </form>
+    </nav>
 
-  <h1 class="text-center text-light bg-dark py-2">CRUD API</h1>
-  <div class="conatiner border d-flex my-3">
+    <div class="container-fluid border d-flex">
 
-    <!-- Form  -->
-    <div class="container border py-4">
-      <div class="container ">
-        <h1 class="text-center text-light bg-dark">Form</h1>
-        <form autocomplete="on" id="addForm">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp"
-              autocomplete="name">
+      <!-- Side Bar  -->
+      <div class="container-fluid border col-2 py-2 bg-dark text-light">
+        <h3>Side Bar</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum maxime nisi exercitationem id, itaque temporibus iure tempore omnis incidunt at placeat rerum, rem commodi ipsam maiores, veritatis tenetur. Consequuntur facilis dolores accusamus assumenda vero, et itaque repudiandae incidunt reprehenderit hic!</p>
+      </div>
+
+      <div class="container border col-10 py-2">
+
+        <!-- Alert Messages -->
+        <div class="alert alert-success d-none" id="success" role="alert"></div>
+        <div class="alert alert-danger d-none" id="error" role="alert"></div>
+
+        <!-- Form  -->
+        <h3 class="text-center text-light bg-dark py-2">Form</h3>
+        <div class="container border col-12 my-3 py-3">
+          <div class="container ">
+            <form autocomplete="on" id="addForm">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp"
+                  autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                  autocomplete="email">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" autocomplete="current-password">
+              </div>
+              <button type="submit" class="btn btn-dark" id="save-btn">Save</button>
+            </form>
           </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
-              autocomplete="email">
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" autocomplete="current-password">
-          </div>
-          <button type="submit" class="btn btn-dark" id="save-btn">Save</button>
-        </form>
+        </div>
+
+        <!-- Record Table  -->
+        <h3 class="text-center text-light bg-dark py-2">Record Table</h3>
+        <div class="container-fluid border ">
+          <table class="table" id="load_table">
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody id="load_table">
+
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
-    <!-- Search Box -->
-    <div class="container border py-4 ">
-      <nav class="navbar navbar-dark bg-dark">
-        <form class="form-inline">
-          <input class="form-control mr-sm-1" type="search" id="search" name="search" placeholder="Search"
-            aria-label="Search">
-          <button class="btn btn-success mx-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </nav>
-    </div>
-
-  </div>
-
-  <!-- Alert Messages -->
-  <div class="alert alert-success d-none" id="success" role="alert"></div>
-  <div class="alert alert-danger d-none" id="error" role="alert"></div>
-
-  <!-- Record Table  -->
-  <div class="container-fluid border ">
-    <h1 class="text-center text-light bg-dark py-2">Record Table</h1>
-    <table class="table" id="load_table">
-      <thead>
-        <tr>
-          <th scope="col">id</th>
-          <th scope="col">Name</th>
-          <th scope="col">Email</th>
-          <th scope="col">Password</th>
-          <th scope="col">Edit</th>
-          <th scope="col">Delete</th>
-        </tr>
-      </thead>
-      <tbody id="load_table">
-
-      </tbody>
-    </table>
-  </div>
-  <div class="container-fluid  text-light bg-dark  mb-0">
-    <p class="text-center py-2 mb-0">Copyright &copy; <span class="text-primary">API</span></p>
-  </div>
 
   <script type="text/javascript" src="js/jquery-3.7.1.js"></script>
   <script type="text/javascript">
@@ -130,7 +155,7 @@
           success: function (data) {
             if (data.status == false) {
               $("#load_table").append(
-                "<tr><h2>" + data.message + "</h2></tr>"
+                "<tr><td colspan='5' class='text-center text-danger '><h4>" + data.message + "</h4></td.</tr>"
               );
               console.log("Table has no records")
             }
@@ -143,7 +168,7 @@
                   "<td>" + value.email + "</td>" +
                   "<td>" + value.password + "</td>" +
                   '<td><button type="submit" class="btn btn-success edit-btn"   data-eid="' + value.id + '" data-toggle="modal" data-target="#edit">Edit</button></td>' +
-                  '<td><button type="submit" class="btn btn-danger">Delete</button></td>' +
+                  '<td><button type="submit" class="btn btn-danger  delete-btn" data-id="' + value.id + '" data-toggle="modal" data-target="#delete">Delete</button></td>' +
                   "</tr>"
                 );
               });
@@ -189,44 +214,39 @@
       }
 
 
-      // Save Button
-      $("#save-btn").on("click", function (e) {
-        e.preventDefault();
-        var jsonObj = jsonData("#addForm");
-        console.log("New record saved");
-        console.log(jsonObj);
-
-        if (jsonObj == false) {
-          message("All fields are required", false);
-        }
-        else {
+      // Delete button 
+      $(document).on("click", ".delete-btn", function(){
+        $("#delete").modal("show");
+        var userId = $(this).data("id");
+        var obj = { id: userId };
+        var myJSON = JSON.stringify(obj);
+        console.log("Selected data");
+        console.log(myJSON);
+        var row = this;
+        $("#confirm").on("click", function(){
           $.ajax({
-            url: "http://localhost/Apis/Crud_Api/insert_api.php",
+            url: "http://localhost/Apis/Crud_Api/delete_api.php",
             type: "POST",
-            data: jsonObj,
+            data: myJSON,
             contentType: "application/json",
             success: function (data) {
               message(data.message, data.status);
               console.log(data);
-
               if (data.status == true) {
-                loadTable();
-                $("#addForm").trigger("reset");
+                $(row).closest("tr").fadeOut();
               }
+              $("#delete").modal("hide");
             }
-
           });
-        }
+        });              
       });
-
-      //Edit Button
-      $(document).on("click", ".edit-btn", function () {
-
+      
+       //Edit Button
+       $(document).on("click", ".edit-btn", function () {
         var userId = $(this).data("eid");
         var obj = { id: userId };
         var myJSON = JSON.stringify(obj);
         console.log(myJSON);
-
         $.ajax({
           url: "http://localhost/Apis/Crud_Api/fetch_api.php",
           type: "POST",
@@ -242,14 +262,42 @@
         });
       });
 
+
+      // Save Button
+      $("#save-btn").on("click", function (e) {
+        e.preventDefault();
+        var jsonObj = jsonData("#addForm");
+        console.log("New record saved");
+        console.log(jsonObj);
+        if (jsonObj == false) {
+          message("All fields are required", false);
+        }
+        else {
+          $.ajax({
+            url: "http://localhost/Apis/Crud_Api/insert_api.php",
+            type: "POST",
+            data: jsonObj,
+            contentType: "application/json",
+            success: function (data) {
+              message(data.message, data.status);
+              console.log(data);
+              if (data.status == true) {
+                loadTable();
+                $("#addForm").trigger("reset");
+              }
+            }
+          });
+        }
+      });
+
+     
+
       //Update Button
       $("#update").on("click", function(e){
-
         e.preventDefault();
         var jsonObj = jsonData("#edit_form");
         console.log("Updated record");
         console.log(jsonObj);
-        
         if (jsonObj == false) {
           message("All fields are required", false);
         }
@@ -267,13 +315,45 @@
                 loadTable();
               }
             }
-
           });
         }
-
+      });
+      
+      //Search 
+      $("#search").on("keyup", function(){
+        $("#load_table").html("");
+        var searchText = $(this).val();
+        console.log(searchText);
+        $.ajax({
+          url: "http://localhost/Apis/Crud_Api/search_api.php?search=" + searchText ,
+          type: "GET",
+          contentType: "application/json",
+          success: function (data) {
+            if (data.status == false) {
+              $("#load_table").append("<tr><td colspan='5' class='text-center text-danger '><h4>" + data.message + "</h4></td.</tr>");
+              console.log("Table has no records");
+            }
+            else {
+              $.each(data, function (key, value) {
+                $("#load_table").append(
+                  "<tr>" +
+                  "<th>" + value.id + "</th>" +
+                  "<td> " + value.name + "</td>" +
+                  "<td>" + value.email + "</td>" +
+                  "<td>" + value.password + "</td>" +
+                  '<td><button type="submit" class="btn btn-success edit-btn"   data-eid="' + value.id + '" data-toggle="modal" data-target="#edit">Edit</button></td>' +
+                  '<td><button type="submit" class="btn btn-danger  delete-btn" data-id="' + value.id + '" data-toggle="modal" data-target="#delete">Delete</button></td>' +
+                  "</tr>"
+                );
+              });
+            } 
+          }
+        });
       });
 
     });
+
+
 
   </script>
 

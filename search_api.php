@@ -3,9 +3,12 @@
    header('Content-Type:application/json');
    header('Acess-Control-Allow-Origin: *');
    
-   $data = json_decode(file_get_contents("php://input"), true);
-
-   $search = $data['search'];
+   //using json
+//    $data = json_decode(file_get_contents("php://input"), true);
+//    $search = $data['search'];
+   
+   // without using json
+   $search = isset($_GET['search']) ? $_GET['search'] : die();
 
    include "config.php";
 
