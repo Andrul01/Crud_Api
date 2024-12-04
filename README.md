@@ -11,20 +11,6 @@ This repository contains a basic implementation of a CRUD (Create, Read, Update,
 - **Delete API**: Deletes a record by ID.
 - **Search API**: Searches for records based on criteria.
 
-## File Structure
-
-├── config.php # Database connection configuration
-├── delete_api.php # Endpoint to delete records
-├── fetch_all_api.php # Endpoint to fetch all records
-├── fetch_api.php # Endpoint to fetch a single record
-├── index.php # Entry point (optional for testing or routing)
-├── insert_api.php # Endpoint to insert new records 
-├── js/
-│ └── jquery-3.7.1.js # JavaScript library for AJAX requests 
-├── search_api.php # Endpoint to search records 
-├── update_api.php # Endpoint to update existing records
-
-
 ## Setup Instructions
 
 1. Clone this repository to your local machine:
