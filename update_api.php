@@ -7,10 +7,17 @@
 
     $data = json_decode(file_get_contents("php://input"), true);
 
+    // Unsanitize data
+    // $id = $data['id'];
+    // $name = $data['name'];
+    // $email = $data['email'];
+    // $password = $data['password'];
+
+    // Sanitize data
     $id = $data['id'];
-    $name = $data['name'];
-    $email = $data['email'];
-    $password = $data['password'];
+    $name = htmlspecialchars(strip_tags($data['name']));
+    $email = htmlspecialchars(strip_tags($data['email']));
+    $password = htmlspecialchars(strip_tags($data['password']));
 
     include "config.php";
 
